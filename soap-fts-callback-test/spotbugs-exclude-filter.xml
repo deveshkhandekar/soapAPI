@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter xmlns="http://findbugs.sourceforge.net/filter/3.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://findbugs.sourceforge.net/filter/3.0.0 findbugs-filter.xsd ">
+	<Match>
+		<Class name="~.*\.SystemStartup$" />
+		<Method name="shutdownSystem" />
+		<Bug pattern="DM_EXIT" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.SystemStartup$" />
+		<Method name="loadPropertyFile" />
+		<Bug pattern="PATH_TRAVERSAL_IN" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.ConnectionSpy$" />
+		<Method name="setCatalog" />
+		<Bug pattern="EXTERNAL_CONFIG_CONTROL" />
+	</Match>
+
+	<Match>
+		<Package
+			name="~com\.test\.log4jdbc[.a-zA-Z0-9]*\.log.*" />
+		<Bug pattern="SQL_INJECTION_JDBC" />
+	</Match>
+
+	<Match>
+		<Package
+			name="~com\.test\.log4jdbc[.a-zA-Z0-9]*\.sql.*" />
+		<Bug pattern="SQL_INJECTION_JDBC" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.ConnectionSpy$" />
+		<Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.DriverSpy$" />
+		<Bug pattern="BC_UNCONFIRMED_CAST" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.DataSourceSpy$" />
+		<Bug pattern="SE_BAD_FIELD" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.AmlExceptionUtils$" />
+		<Method name="getStackTrace" />
+		<Bug pattern="INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.ResultSetCollectorPrinter$" />
+		<Method name="getResultSetToPrint" />
+		<Bug pattern="CRLF_INJECTION_LOGS" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.ResultSetCollectorPrinter$" />
+		<Method name="padRight" />
+		<Bug pattern="FORMAT_STRING_MANIPULATION" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.ResultSetCollectorPrinter$" />
+		<Method name="getResultSetToPrint" />
+		<Bug pattern="CRLF_INJECTION_LOGS" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.Log4j2SpyLogDelegator$" />
+		<Method name="resultSetCollected" />
+		<Bug pattern="CRLF_INJECTION_LOGS" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.Log4j2SpyLogDelegator$" />
+		<Method name="debug" />
+		<Bug pattern="CRLF_INJECTION_LOGS" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.BaseForm$" />
+		<Method name="getParameterMap" />
+		<Bug pattern="EI_EXPOSE_REP2" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.BaseForm$" />
+		<Method name="getParameterMap" />
+		<Bug pattern="EI_EXPOSE_REP" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.BaseForm$" />
+		<Method name="setParameterMap" />
+		<Bug pattern="EI_EXPOSE_REP2" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.BaseForm$" />
+		<Method name="setParameterMap" />
+		<Bug pattern="EI_EXPOSE_REP" />
+	</Match>
+
+	<Match>
+		<Class name="~.*\.MessageResourceUtils$" />
+		<Bug pattern="SE_BAD_FIELD" />
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="SPRING_ENDPOINT"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.*"/>
+	    <Bug pattern="UWF_UNWRITTEN_FIELD"/>
+	</Match>
+
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="UPM_UNCALLED_PRIVATE_METHOD"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="SERVLET_HEADER_USER_AGENT"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="SERVLET_SERVER_NAME"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="SPRING_CSRF_UNRESTRICTED_REQUEST_MAPPING"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="TRUST_BOUNDARY_VIOLATION"/>
+	</Match>
+	
+	<Match>
+		<Package name="~com\.test[.a-zA-Z0-9]*\.controller.*"/>
+	    <Bug pattern="SERVLET_QUERY_STRING"/>
+	</Match>
+	
+</FindBugsFilter>

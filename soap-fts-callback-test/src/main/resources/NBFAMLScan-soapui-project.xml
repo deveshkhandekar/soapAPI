@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="eb731e9f-f1db-4dcc-a2b7-4620243fb83a" activeEnvironment="Default" name="NBFAMLScan" resourceRoot="${projectDir}" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e40fea59-a220-45e4-b13b-90d9e7c589eb" wsaVersion="NONE" name="NBFAML_provider_ws_NBFAMLScan_Binder" type="wsdl" bindingName="{http://devwbin01.nbf.ae/NBFAML.provider.ws:NBFAMLScan}NBFAML_provider_ws_NBFAMLScan_Binder" soapVersion="1_2" anonymous="optional" definition="file:/D:/VarunAiyappa/Projects/AMLUpgrade/CallBackService/NBFAMLScan.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\VarunAiyappa\Projects\AMLUpgrade\CallBackService\NBFAMLScan.wsdl"><con:part><con:url>file:\D:\VarunAiyappa\Projects\AMLUpgrade\CallBackService\NBFAMLScan.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="NBFAMLScan" targetNamespace="http://devwbin01.nbf.ae/NBFAML.provider.ws:NBFAMLScan" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://devwbin01.nbf.ae/NBFAML.provider.ws:NBFAMLScan" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:documentation>This is a callback service exposed to receive the corresponding AML response. Provider: T24, FTI Consumer: AML Service Design Template Type: NBF API Type_1</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://devwbin01.nbf.ae/NBFAML.provider.ws:NBFAMLScan">
+      <xsd:element name="AMLScan" type="tns:AMLScan"/>
+      <xsd:element name="AMLScanResponse" type="tns:AMLScanResponse"/>
+      <xsd:complexType name="AMLScan">
+        <xsd:sequence>
+          <xsd:element name="AMLScanRequest" nillable="true" type="tns:amlScanRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="amlScanRequest">
+        <xsd:sequence>
+          <xsd:element name="NBF_AML_HEADER" nillable="true" type="tns:NBF_AML_HEADER"/>
+          <xsd:element name="Response" nillable="true" type="tns:Response"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NBF_AML_HEADER">
+        <xsd:sequence>
+          <xsd:element name="MsgFormat" nillable="true" type="xsd:string"/>
+          <xsd:element name="MsgVersion" nillable="true" type="xsd:string"/>
+          <xsd:element name="RequestorId" nillable="true" type="xsd:string"/>
+          <xsd:element name="RequestorChannelId" nillable="true" type="xsd:string"/>
+          <xsd:element name="RequestorUserId" nillable="true" type="xsd:string"/>
+          <xsd:element name="RequestorLanguage" nillable="true" type="xsd:string"/>
+          <xsd:element name="RequestorSecurityInfo" nillable="true" type="xsd:string"/>
+          <xsd:element name="ReturnCode" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Response">
+        <xsd:sequence>
+          <xsd:element name="MessageId" nillable="true" type="xsd:string"/>
+          <xsd:element name="MessageType" nillable="true" type="xsd:string"/>
+          <xsd:element name="MessageData" nillable="true" type="xsd:string"/>
+          <xsd:element name="Status" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AMLScanResponse">
+        <xsd:sequence>
+          <xsd:element name="AMLScanResponse" nillable="true" type="tns:amlScanResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="amlScanResponse">
+        <xsd:sequence>
+          <xsd:element name="Response" nillable="true" type="tns:Response2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Response2">
+        <xsd:sequence>
+          <xsd:element name="MessageId" nillable="true" type="xsd:string"/>
+          <xsd:element name="Status" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NBFAMLScan_PortType_AMLScanResponse">
+    <wsdl:part name="parameters" element="tns:AMLScanResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NBFAMLScan_PortType_AMLScan">
+    <wsdl:part name="parameters" element="tns:AMLScan"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NBFAMLScan_PortType">
+    <wsdl:operation name="AMLScan">
+      <wsdl:input message="tns:NBFAMLScan_PortType_AMLScan"></wsdl:input>
+      <wsdl:output message="tns:NBFAMLScan_PortType_AMLScanResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NBFAML_provider_ws_NBFAMLScan_Binder" type="tns:NBFAMLScan_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AMLScan">
+      <soap12:operation soapAction="AMLScan" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NBFAMLScan">
+    <wsdl:port name="NBFAMLScansoap12https" binding="tns:NBFAML_provider_ws_NBFAMLScan_Binder">
+      <soap12:address location="https://nbfappwmdev1.nbf.ae/ws/NBFAMLScan.NBFAMLScansoap12https/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLScansoap12http2" binding="tns:NBFAML_provider_ws_NBFAMLScan_Binder">
+      <soap12:address location="http://172.16.78.123:5550/ws/NBFAMLScan/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLScansoap12https2" binding="tns:NBFAML_provider_ws_NBFAMLScan_Binder">
+      <soap12:address location="https://nbfappwmdev1.nbf.ae/ws/NBFAMLScan/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLScansoap12http" binding="tns:NBFAML_provider_ws_NBFAMLScan_Binder">
+      <soap12:address location="http://172.16.78.123:5550/ws/NBFAMLScan.NBFAMLScansoap12http/1.0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://172.16.78.123:5550/ws/NBFAMLScan.NBFAMLScansoap12http/1.0</con:endpoint><con:endpoint>http://172.16.78.123:5550/ws/NBFAMLScan/1.0</con:endpoint><con:endpoint>https://nbfappwmdev1.nbf.ae/ws/NBFAMLScan.NBFAMLScansoap12https/1.0</con:endpoint><con:endpoint>https://nbfappwmdev1.nbf.ae/ws/NBFAMLScan/1.0</con:endpoint></con:endpoints><con:operation id="9bfbf30d-f44a-435b-b93b-5f393b4bc87e" isOneWay="false" action="AMLScan" name="AMLScan" bindingOperationName="AMLScan" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7224533c-eb25-4660-8ab6-b030b57ced55" name="Request 1" sslKeystore="NBF_2way_SSL_2021.pfx"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="NBF-APIKey" value="bbbef448-bda1-44e8-b23f-ea2b220802d1" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://nbfappwmdev2.nbf.ae/ws/NBFAMLScan.NBFAMLScansoap12http/1.0</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:nbf="NBFAMLScan" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">\r
+   <soap:Header>\r
+      <wsse:Security soap:mustUnderstand="true" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r
+         <wsse:UsernameToken wsu:Id="UsernameToken-5AA5FB743D4DEFCC0617050608954052">\r
+            <wsse:Username>nbfuatamlusr</wsse:Username>\r
+            <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">moJ43qQiyJZK1WlJX+vkLmaSZzU=</wsse:Password>\r
+            <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">lmsQJkwPfgUlTXehMNeyew==</wsse:Nonce>\r
+            <wsu:Created>2024-01-12T12:01:35.405Z</wsu:Created>\r
+         </wsse:UsernameToken>\r
+      </wsse:Security>\r
+   </soap:Header>\r
+   <soap:Body>\r
+      <nbf:AMLScan>\r
+         <AMLScanRequest>\r
+            <NBF_AML_HEADER>\r
+               <MsgFormat>AML</MsgFormat>\r
+               <MsgVersion>000</MsgVersion>\r
+               <RequestorId>NBF</RequestorId>\r
+               <RequestorChannelId>SWIFT</RequestorChannelId>\r
+               <RequestorUserId>?</RequestorUserId>\r
+               <RequestorLanguage>E</RequestorLanguage>\r
+               <RequestorSecurityInfo>Secure</RequestorSecurityInfo>\r
+            </NBF_AML_HEADER>\r
+            <Response>\r
+               <MessageId>TF232545847861-D21234567890-BNK</MessageId>\r
+               <MessageType>OUT</MessageType>\r
+               <MessageData>{1:F01NBFUAEAFAFUJ.SN...ISN.}{2:I103DUIBAEADXXXXN}
+{3:{108:xxxxx}{121:2d453e34-67ac-442a-bc37-16da23ef5ed5}}{4:
+:20:FT1921709193
+:23B:CRED
+:32A:190801AED500,00
+:50K:/AE12334546
+OSAMA BIN LADEN
+:53A:CBAUAEAA
+:59:/AE490240006520479855401
+OSAMA BIN LADEN
+:70:/REF/SO-1408
+:71A:SHA
+:77B:/ORDERRES/AE//TOF/TRANSFER OF FUN
+}</MessageData>\r
+               <Status>CLEAN</Status>\r
+            </Response>\r
+         </AMLScanRequest>\r
+      </nbf:AMLScan>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:username>nbfuatamlusr</con:username><con:password>nbfuatamlusr@2023</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://devwbin01.nbf.ae/NBFAML.provider.ws:NBFAMLScan/NBFAMLScan_PortType/AMLScanRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:crypto><con:source>NBF_2way_SSL_2021.pfx</con:source><con:password>2Way6745!ifntT</con:password><con:type>KEYSTORE</con:type></con:crypto></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

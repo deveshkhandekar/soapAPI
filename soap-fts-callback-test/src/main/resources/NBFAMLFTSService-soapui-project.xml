@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5aaf8f57-2372-48ab-b7fe-b89aa38c2a19" activeEnvironment="Default" name="NBFAMLFTSCallback" resourceRoot="" soapui-version="5.1.3" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="2a614299-ba22-4c03-ac3a-f4dcc4c2b6ab" wsaVersion="NONE" name="NBFAMLFTSCallback_Binder" type="wsdl" bindingName="{NBFAMLFTSCallback}NBFAMLFTSCallback_Binder" soapVersion="1_2" anonymous="optional" definition="https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback/1.0?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback/1.0?wsdl"><con:part><con:url>https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback/1.0?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="NBFAMLFTSCallback" targetNamespace="NBFAMLFTSCallback" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="NBFAMLFTSCallback" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:tns="http://devwbin01/NBFAMLFTSService.ws.soap.prov:NBFAMLFTSCallback" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:HDR1="https://localhost/FTSAML/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>Description: This service is used to send AML response to FTS system.
+
+Provider: FTS
+Consumer: AML
+Service Design Template Type: NBF API Type_1</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://localhost/FTSAML/" xmlns:tns="NBFAMLFTSCallback" xmlns:ns2="https://localhost/FTSAML/">
+      <xsd:import namespace="NBFAMLFTSCallback"/>
+      <xsd:element name="UpdateAMLRequest" type="ns2:UpdateAMLRequest"/>
+      <xsd:element name="UpdateAMLResponse" type="ns2:UpdateAMLResponse"/>
+      <xsd:complexType name="UpdateAMLRequest">
+        <xsd:sequence>
+          <xsd:element name="UpdateAMLResponse" type="tns:UpdateAMLResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateAMLResponse">
+        <xsd:sequence>
+          <xsd:element name="UpdateAMLResponseResponse" type="tns:UpdateAMLResponseResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="NBFAMLFTSCallback" xmlns:tns="NBFAMLFTSCallback" xmlns:ns2="https://localhost/FTSAML/">
+      <xsd:import namespace="https://localhost/FTSAML/"/>
+      <xsd:element name="FTSAML_UpdateAML_Input" type="tns:FTSAML_UpdateAML_Input"/>
+      <xsd:element name="FTSAML_UpdateAML_Output" type="tns:FTSAML_UpdateAML_Output"/>
+      <xsd:complexType name="FTSAML_UpdateAML_Input">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ns2:UpdateAMLRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateAMLResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="objAMLReq" type="tns:objAMLReq"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="objAMLReq">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="UniqueReferenceNo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseDatetime" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseDescription" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FTSAML_UpdateAML_Output">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ns2:UpdateAMLResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateAMLResponseResponse">
+        <xsd:sequence>
+          <xsd:element name="UpdateAMLResponseResult" type="tns:UpdateAMLResponseResult"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateAMLResponseResult">
+        <xsd:sequence>
+          <xsd:element name="UniqueReferenceNo" type="xsd:string"/>
+          <xsd:element name="ResponseDatetime" type="xsd:string"/>
+          <xsd:element name="ResponseCode" type="xsd:string"/>
+          <xsd:element name="ResponseDescription" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NBFAMLFTSCallback_Port_FTSAML_UpdateAML_Input">
+    <wsdl:part name="parameters" element="tns1:FTSAML_UpdateAML_Input"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NBFAMLFTSCallback_Port_FTSAML_UpdateAML_Output">
+    <wsdl:part name="parameters" element="tns1:FTSAML_UpdateAML_Output"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="NBFAMLFTSCallback_Port">
+    <wsdl:operation name="UpdateAML">
+      <wsdl:input message="tns1:NBFAMLFTSCallback_Port_FTSAML_UpdateAML_Input"></wsdl:input>
+      <wsdl:output message="tns1:NBFAMLFTSCallback_Port_FTSAML_UpdateAML_Output"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NBFAMLFTSCallback_Binder" type="tns1:NBFAMLFTSCallback_Port">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UpdateAML">
+      <soap12:operation soapAction="UpdateAML" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NBFAMLFTSCallback">
+    <wsdl:port name="NBFAMLFTSCallbacksoap12https" binding="tns1:NBFAMLFTSCallback_Binder">
+      <soap12:address location="https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback.NBFAMLFTSCallbacksoap12https/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLFTSCallbacksoap12http2" binding="tns1:NBFAMLFTSCallback_Binder">
+      <soap12:address location="http://172.16.78.123:5550/ws/NBFAMLFTSCallback/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLFTSCallbacksoap12https2" binding="tns1:NBFAMLFTSCallback_Binder">
+      <soap12:address location="https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback/1.0"/>
+    </wsdl:port>
+    <wsdl:port name="NBFAMLFTSCallbacksoap12http" binding="tns1:NBFAMLFTSCallback_Binder">
+      <soap12:address location="http://172.16.78.123:5550/ws/NBFAMLFTSCallback.NBFAMLFTSCallbacksoap12http/1.0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://172.16.78.123:5550/ws/NBFAMLFTSCallback.NBFAMLFTSCallbacksoap12http/1.0</con:endpoint><con:endpoint>http://172.16.78.123:5550/ws/NBFAMLFTSCallback/1.0</con:endpoint><con:endpoint>https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback.NBFAMLFTSCallbacksoap12https/1.0</con:endpoint><con:endpoint>https://nbfappwmdev1.nbf.ae/ws/NBFAMLFTSCallback/1.0</con:endpoint></con:endpoints><con:operation id="8ebe1e09-6799-4edc-9096-cdbbbff33938" isOneWay="false" action="UpdateAML" name="UpdateAML" bindingOperationName="UpdateAML" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cfee9026-f559-4229-b6ff-12f7d37e77ae" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="NBF-APIKey" value="bbbef448-bda1-44e8-b23f-ea2b220802d1" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://nbfappwmdev2.nbf.ae/ws/NBFAMLFTSCallback.NBFAMLFTSCallbacksoap12http/1.0</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:fts="https://localhost/FTSAML/" xmlns:nbf="NBFAMLFTSCallback" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">\r
+   <soap:Header>\r
+      <wsse:Security soap:mustUnderstand="true" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r
+         <wsse:UsernameToken wsu:Id="UsernameToken-5F72BD936FAA443DE6170894399542415">\r
+            <wsse:Username>nbfuatamlusr</wsse:Username>\r
+            <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">hBe34kBpAQ897BEIJ2mpZEY1exA=</wsse:Password>\r
+            <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">kbarmlzD+lziml591q6iNA==</wsse:Nonce>\r
+            <wsu:Created>2024-02-26T10:39:55.424Z</wsu:Created>\r
+         </wsse:UsernameToken>\r
+      </wsse:Security>\r
+   </soap:Header>\r
+   <soap:Body>\r
+      <nbf:FTSAML_UpdateAML_Input>\r
+         <fts:UpdateAMLRequest>\r
+            <UpdateAMLResponse>\r
+               <objAMLReq>\r
+                  <UniqueReferenceNo>1996415</UniqueReferenceNo>\r
+                  <ResponseDatetime>2024-02-07 09:00:07.681</ResponseDatetime>\r
+                  <ResponseCode>4</ResponseCode>\r
+                  <ResponseDescription>Message Clean</ResponseDescription>\r
+               </objAMLReq>\r
+            </UpdateAMLResponse>\r
+         </fts:UpdateAMLRequest>\r
+      </nbf:FTSAML_UpdateAML_Input>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:username>nbfuatamlusr</con:username><con:password>nbfuatamlusr@2023</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="NBFAMLFTSCallback/NBFAMLFTSCallback_Port/UpdateAMLRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

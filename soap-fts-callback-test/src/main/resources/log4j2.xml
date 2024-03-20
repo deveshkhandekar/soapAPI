@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="TRACE">
+	<Properties>
+        <Property name="basePath">/test-ai-aml/NEWTEST-AML-LOGS</Property>
+    </Properties>
+    
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{yyyy-MMM-dd HH:mm:ss.SSS}] [%t] [%-5level] [%-40c{1.}] :: %msg %n"/>
+        </Console>
+        
+        <RollingRandomAccessFile name="LogToRollingRandomAccessFile" fileName="${basePath}/UI/NEWTEST_AML_UI.log"
+                                 filePattern="${basePath}/UI/$${date:yyyy-MMM-dd}/NEWTEST_AML_UI-%d{dd-MMM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>[%d{yyyy-MMM-dd HH:mm:ss.SSS}] [%t] [%-5level] [%-40c{1.}] :: %msg %n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="com.test" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+		<Logger name="org.springframework" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.springframework.beans" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+		<Logger name="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>        
+        
+        <!--         
+			org.hibernate.SQL			Log all SQL DML statements as they are executed
+			org.hibernate.type			Log all JDBC parameters
+			org.hibernate.tool.hbm2ddl	Log all SQL DDL statements as they are executed
+			org.hibernate.pretty		Log the state of all entities (max 20 entities) associated with the session at flush time
+			org.hibernate.cache			Log all second-level cache activity
+			org.hibernate.transaction	Log transaction related activity
+			org.hibernate.jdbc			Log all JDBC resource acquisition
+			org.hibernate.hql.ast.AST	Log HQL and SQL ASTs during query parsing
+			org.hibernate.secure		Log all JAAS authorization requests
+			org.hibernate				Log everything. This is a lot of information but it is useful for troubleshooting
+		 -->
+		
+		<Logger name="log4jdbc.log4j2" level="TRACE" additivity="false">
+			<MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY" onMismatch="NEUTRAL"/>
+			<AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+		</Logger>
+		
+		<Logger name="com.test.log4jdbc.log.log4j2.message.MethodReturnedMessage" level="TRACE" additivity="false">
+			<AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+		</Logger>
+		
+		<!-- jdbc.audit: logs all JDBC calls except for ResultSets -->
+		 <!-- <Logger name="com.test.log4jdbc.log4j2" level="info" additivity="false">
+	      <MarkerFilter marker="LOG4JDBC_AUDIT" onMatch="ACCEPT" onMismatch="DENY"/>
+	      	<AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+	    </Logger> -->
+
+		<!-- jdbc.resultset: logs ResultSet calls -->
+		 <!-- <Logger name="com.test.log4jdbc.log4j2" level="info" additivity="false">
+	      <MarkerFilter marker="LOG4JDBC_RESULTSET" onMatch="ACCEPT" onMismatch="DENY"/>
+	      	<AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+	    </Logger> -->
+
+        <Logger name="org.hibernate" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.dialect.Dialect" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.SQL" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.type" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+        <Logger name="org.hibernate.cfg.annotations.QueryBinder" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.springframework.orm.jpa.JpaTransactionManager" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+		<Logger name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.springframework.data.repository.config.RepositoryConfigurationDelegate" level="TRACE" additivity="false"> 
+		    <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+		</Logger> 
+		
+		<Logger name="org.springframework.boot.test.context.SpringBootTestContextBootstrapper" level="TRACE" additivity="false"> 
+		    <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+		</Logger>
+        
+        <Logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.type.BasicTypeRegistry" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false"> 
+		    <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+		</Logger> 
+		
+        <Logger name="org.springframework.test" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+		<Logger name="org.springframework.ws.client.MessageTracing" level="TRACE">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+		<Logger name="com.zaxxer" level="OFF" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        <!-- 
+		<Logger name="com.zaxxer.hikari.util" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+        <Logger name="com.zaxxer.hikari.HikariConfig" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="com.zaxxer.hikari.pool.HikariPool" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="com.zaxxer.hikari.pool.PoolBase" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="com.zaxxer.hikari.HikariDataSource" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="com.zaxxer.hikari.pool.HikariProxyResultSet" level="TRACE" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        <Logger name="com.zaxxer.hikari.pool.ProxyPreparedStatement" level="DEBUG" additivity="false">
+            <AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger> -->
+
+         
+        <Root level="DEBUG">
+        	<AppenderRef ref="LogToRollingRandomAccessFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Root>
+    </Loggers>
+</Configuration>
